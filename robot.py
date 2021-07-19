@@ -1,5 +1,6 @@
 import socket
 import json
+import re
 
 DEFAULT_IP_ADDRESS = "127.0.0.1"
 DEFAULT_PORT = 33355
@@ -91,7 +92,10 @@ def send_command_dictionary_over_tcp_socket(conn, command_dictionary):
     resp = b''
     while "response_type" not in resp.decode('utf-8'):
         resp = conn.recv(4096)
-    return json.loads(resp.decode('utf-8'))
+    #Mac hack?
+    dec_resp = resp.decode('utf-8')
+    dec_resp = re.sub('^.*?[{]', '{', dec_resp)
+    return json.loads(dec_resp)
 
 #Export:
 RobotController = TCPRobotController
