@@ -18,42 +18,42 @@ class TCPRobotController():
 
     def forward(self, y):
         self.send_command_dictionary({
-            "command_type": "move", 
+            "command_type": "move",
             "x": 0,
             "y": -y
         })
 
     def backward(self, y):
         self.send_command_dictionary({
-            "command_type": "move", 
-            "x": 0, 
+            "command_type": "move",
+            "x": 0,
             "y": y
         })
 
     def left(self, x):
         self.send_command_dictionary({
-            "command_type": "move", 
-            "x": -x, 
+            "command_type": "move",
+            "x": -x,
             "y": 0
         })
 
     def right(self, x):
         self.send_command_dictionary({
-            "command_type": "move", 
+            "command_type": "move",
             "x": x,
             "y": 0
         })
 
     def rotate_clockwise(self, degrees):
         self.send_command_dictionary({
-            "command_type": "rotate", 
+            "command_type": "rotate",
             "degrees": degrees,
             "rotate_direction": "clockwise"
         })
 
     def rotate_counterclockwise(self, degrees):
         self.send_command_dictionary({
-            "command_type": "rotate", 
+            "command_type": "rotate",
             "degrees": degrees,
             "rotate_direction": "counterclockwise"
         })
@@ -91,7 +91,7 @@ def send_command_dictionary_over_tcp_socket(conn, command_dictionary):
     resp = b''
     while "response_type" not in resp.decode('utf-8'):
         resp = conn.recv(4096)
-    return json.loads(resp)
+    return json.loads(resp.decode('utf-8'))
 
 #Export:
 RobotController = TCPRobotController
