@@ -5,3 +5,4 @@ r = robot.RobotController()
 r.connect()
 
 
+r.forward(200)
