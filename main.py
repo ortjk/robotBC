@@ -9,12 +9,13 @@ r.forward(350)
 
 # go left into room at marker and rescue person
 # insert marker check here
-if True:
+if r.read_marker() == 1:
     r.left(640)
     r.forward(0)
 
     # add person rescue here
-
+    if r.scan_for_people():
+        r.rescue_person()
     r.backward(0)
     r.right(640)
 
@@ -28,7 +29,7 @@ r.forward(600)
 
 # go into room and extinguish fire
 # insert marker check here
-if True:
+if r.read_marker() == 1:
     r.left(600)
     r.forward(30)
 
@@ -44,7 +45,7 @@ r.forward(1600)
 
 # go into room and take temperature
 # insert marker check here
-if True:
+if r.read_marker() == 1:
     r.left(75)
 
     # add temperature taking here
@@ -60,7 +61,7 @@ r.forward(800)
 
 # go into room and extinguish fire
 # add marker check here
-if True:
+if r.read_marker() == 1:
     r.right(80)
     r.forward(400)
     r.left(500)
@@ -78,13 +79,14 @@ r.left(450)
 
 # go into room and rescue person
 # add marker check here
-if True:
+if r.read_marker() == 1:
     r.right(50)
     r.forward(300)
     r.left(350)
 
     # add rescue code here
-
+    if r.scan_for_people():
+        r.rescue_person()
     r.right(350)
     r.backward(300)
     r.left(50)
