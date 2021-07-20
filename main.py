@@ -1,12 +1,18 @@
 import robot
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
+print(plt)
+
+r = robot.RobotController()
+r.connect()
 
 xs = []
 ys = []
 room_num = 0
 
-r = robot.RobotController()
-r.connect()
+r.take_temperature()
+xs.append(room_num)
+ys.append(r.take_temperature())
+room_num == 0
 
 xs.append(room_num)
 ys.append(r.take_temperature())
@@ -19,6 +25,8 @@ r.forward(350)
 if r.read_marker() == 1:
     r.left(640)
     r.forward(50)
+
+    r.take_temperature()
 
     if r.scan_for_people():
         r.rescue_person()
@@ -43,6 +51,8 @@ if r.read_marker() == 1:
     r.left(600)
     r.forward(75)
 
+    r.take_temperature()
+
     while r.scan_for_fire():
         r.extinguish_fire()
 
@@ -62,6 +72,8 @@ r.forward(1600)
 if r.read_marker() == 1:
     r.left(75)
 
+    r.take_temperature()
+
     xs.append(room_num)
     ys.append(r.take_temperature())
     room_num += 1
@@ -80,6 +92,8 @@ if r.read_marker() == 1:
     r.right(50)
     r.forward(400)
     r.left(600)
+
+    r.take_temperature()
 
     while r.scan_for_fire():
         r.extinguish_fire()
@@ -103,6 +117,8 @@ if r.read_marker() == 1:
     r.forward(300)
     r.left(350)
 
+    r.take_temperature()
+
     if r.scan_for_people():
         r.rescue_person()
 
@@ -124,7 +140,12 @@ r.backward(900)
 r.left(2200)
 r.forward(1400)
 
+# Graphing the temperature
+
+
 plt.plot(xs, ys, 'ro')
+plt.title('Temperatures in each room')
 plt.xlabel('Room Number')
 plt.ylabel('Room Temperature')
+plt.grid(True)
 plt.show()
