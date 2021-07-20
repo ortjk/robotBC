@@ -1,8 +1,21 @@
 import robot
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 
 r = robot.RobotController()
 r.connect()
+
+xs = []
+ys = []
+room_num = 0
+
+r = robot.RobotController()
+r.connect()
+
+r.take_temperature()
+
+xs.append(room_num)
+ys.append(r.take_temperature())
+room_num += 1
 
 r.left(125)
 r.forward(350)
@@ -13,7 +26,8 @@ if r.read_marker() == 1:
     r.left(640)
     r.forward(0)
 
-    # add person rescue here
+    r.take_temperature()
+
     if r.scan_for_people():
         r.rescue_person()
     r.backward(0)
@@ -33,7 +47,10 @@ if r.read_marker() == 1:
     r.left(600)
     r.forward(30)
 
-    # add fire extinguishing here
+    r.take_temperature()
+
+    while r.scan_for_fire():
+        r.extinguish_fire()
 
     r.backward(30)
     r.right(600)
@@ -48,7 +65,11 @@ r.forward(1600)
 if r.read_marker() == 1:
     r.left(75)
 
-    # add temperature taking here
+    r.take_temperature()
+
+    xs.append(room_num)
+    ys.append(r.take_temperature())
+    room_num += 1
 
     r.right(75)
 
@@ -66,7 +87,10 @@ if r.read_marker() == 1:
     r.forward(400)
     r.left(500)
 
-    # add extinguishing here
+    r.take_temperature()
+
+    while r.scan_for_fire():
+        r.extinguish_fire()
 
     r.right(500)
     r.backward(400)
@@ -84,7 +108,8 @@ if r.read_marker() == 1:
     r.forward(300)
     r.left(350)
 
-    # add rescue code here
+    r.take_temperature()
+
     if r.scan_for_people():
         r.rescue_person()
     r.right(350)
@@ -101,4 +126,9 @@ r.backward(900)
 r.left(2200)
 r.forward(1400)
 
-# plot the graph
+plt.plot(xs, ys, 'ro')
+plt.title('Temperature for the maze')
+plt.xlabel('Room Number')
+plt.ylabel('Room Temperature')
+plt.grid(True)
+plt.show()
