@@ -8,6 +8,7 @@ r.left(125)
 r.forward(350)
 
 # go left into room at marker and rescue person
+# insert marker check here
 if True:
     r.left(640)
     r.forward(0)
@@ -26,6 +27,7 @@ if True:
 r.forward(600)
 
 # go into room and extinguish fire
+# insert marker check here
 if True:
     r.left(600)
     r.forward(30)
@@ -41,6 +43,7 @@ r.rotate_counterclockwise(86)
 r.forward(1600)
 
 # go into room and take temperature
+# insert marker check here
 if True:
     r.left(75)
 
