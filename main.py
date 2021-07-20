@@ -1,6 +1,5 @@
 import robot
 import matplotlib.pyplot as plt
-print(plt)
 
 r = robot.RobotController()
 r.connect()
@@ -10,9 +9,6 @@ ys = []
 room_num = 0
 
 r.take_temperature()
-xs.append(room_num)
-ys.append(r.take_temperature())
-room_num == 0
 
 xs.append(room_num)
 ys.append(r.take_temperature())
