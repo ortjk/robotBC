@@ -49,9 +49,6 @@ if r.read_marker() == 1:
 
     r.take_temperature()
 
-    while r.scan_for_fire():
-        r.extinguish_fire()
-
     r.backward(30)
     r.right(600)
 
@@ -89,9 +86,6 @@ if r.read_marker() == 1:
 
     r.take_temperature()
 
-    while r.scan_for_fire():
-        r.extinguish_fire()
-
     r.right(500)
     r.backward(400)
     r.left(50)
@@ -112,6 +106,7 @@ if r.read_marker() == 1:
 
     if r.scan_for_people():
         r.rescue_person()
+        
     r.right(350)
     r.backward(300)
     r.left(50)
