@@ -38,10 +38,11 @@ if r.read_marker() == 1:
     r.left(40)
     r.forward(350)
 
-
 r.forward(600)
 
-# go into room and extinguish fire
+while r.scan_for_fire():
+    while r.extinguish_fire()
+
 # insert marker check here
 if r.read_marker() == 1:
     r.left(600)
@@ -51,7 +52,6 @@ if r.read_marker() == 1:
 
     r.backward(30)
     r.right(600)
-
 
 r.forward(400)
 r.rotate_counterclockwise(86)
@@ -70,14 +70,15 @@ if r.read_marker() == 1:
 
     r.right(75)
 
-
 r.forward(520)
 r.left(750)
 r.backward(750)
 r.rotate_counterclockwise(90)
 r.forward(800)
 
-# go into room and extinguish fire
+while r.scan_for_fire():
+    while r.extinguish_fire()
+
 # add marker check here
 if r.read_marker() == 1:
     r.right(80)
@@ -89,7 +90,6 @@ if r.read_marker() == 1:
     r.right(500)
     r.backward(400)
     r.left(50)
-
 
 r.left(1000)
 r.forward(200)
@@ -106,11 +106,10 @@ if r.read_marker() == 1:
 
     if r.scan_for_people():
         r.rescue_person()
-        
+
     r.right(350)
     r.backward(300)
     r.left(50)
-
 
 # return to the entrance
 r.backward(100)
